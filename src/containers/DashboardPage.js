@@ -12,29 +12,12 @@ import RecentlyProducts from '../components/dashboard/RecentlyProducts';
 import globalStyles from '../styles';
 import Data from '../data';
 
-import ChatBot from 'react-simple-chatbot';
+import ChatBot from '../components/ChatBot';
 
 
 class DashboardPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      chatbot: {
-        opened: false
-      }
-    };
-  }
-
-  _toggleChatbotFloating = () => {
-    let prevOpenedState = this.state.chatbot.opened;
-    this.setState({chatbot: {opened: !prevOpenedState}})
-  }
 
   render() {
-    const {
-      chatbot
-    } = this.state;
-
     return (
       <div>
         <h3 style={globalStyles.navigation}>Application / Dashboard</h3>
@@ -94,20 +77,8 @@ class DashboardPage extends Component {
             <BrowserUsage data={Data.dashBoardPage.browserUsage} />
           </div>
         </div>
-        <ChatBot
-          steps={[
-            {
-              id: 'hello-world',
-              message: 'Hello World!',
-              end: true,
-            },
-          ]}
-          opened={chatbot.opened}
-          className={"rsc-float-button"}
-          floating={true}
-          toggleFloating={this._toggleChatbotFloating}
-        />
 
+        <ChatBot />
       </div>
     );
   }
