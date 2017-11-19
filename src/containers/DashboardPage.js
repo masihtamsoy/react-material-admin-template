@@ -12,6 +12,8 @@ import RecentlyProducts from '../components/dashboard/RecentlyProducts';
 import globalStyles from '../styles';
 import Data from '../data';
 
+import ChatBot from 'react-simple-chatbot';
+
 const DashboardPage = () => {
 
   return (
@@ -32,7 +34,7 @@ const DashboardPage = () => {
         <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-b-15 ">
           <InfoBox Icon={ThumbUp}
                    color={cyan600}
-                   title="Likes"
+                   title="Likes Here"
                    value="4231"
           />
         </div>
@@ -73,6 +75,19 @@ const DashboardPage = () => {
           <BrowserUsage data={Data.dashBoardPage.browserUsage}/>
         </div>
       </div>
+      <ChatBot
+        steps={[
+          {
+            id: 'hello-world',
+            message: 'Hello World!',
+            end: true,
+          },
+        ]}
+        opened={false}
+        className={"rsc-float-button"}
+        floating={true}
+      />
+
     </div>
   );
 };
