@@ -12,7 +12,7 @@ class Chatbot extends Component {
     };
   }
 
-  _toggleChatbotFloating (){
+  _toggleChatbotFloating() {
     let prevOpenedState = this.state.chatbot.opened;
     this.setState({chatbot: {opened: !prevOpenedState}});
   }
@@ -30,7 +30,7 @@ class Chatbot extends Component {
         opened={this.state.chatbot.opened}
         className={"rsc-float-button"}
         floating={true}
-        toggleFloating={this._toggleChatbotFloating}
+        toggleFloating={this._toggleChatbotFloating.bind(this)}
         disabled={true}
       />
     );
