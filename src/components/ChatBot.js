@@ -11,6 +11,14 @@ class Chatbot extends Component {
       }
     };
   }
+  
+
+  componentDidMount() {
+    document.getElementsByClassName('rsc-input')[0].disabled = false;
+    // document.getElementsByClassName('rsc-submit-button')[0].disabled = false;
+    
+  }
+  
 
   _toggleChatbotFloating() {
     let prevOpenedState = this.state.chatbot.opened;
@@ -21,17 +29,28 @@ class Chatbot extends Component {
     return (
       <ChatBot
         steps={[
-          {
-            id: 'hello-world',
-            message: 'Hello World!',
-            end: true,
-          },
+        {
+          id: '1',
+          message: 'What is your name?',
+          trigger: '2',
+        },
+        {
+          id: '2',
+          user: true,
+          trigger: '3',
+        },
+        {
+          id: '3',
+          message: 'Hi {previousValue}, nice to meet you!',
+          end: true,
+        },
         ]}
         opened={this.state.chatbot.opened}
         className={"rsc-float-button"}
         floating={true}
         toggleFloating={this._toggleChatbotFloating.bind(this)}
         disabled={true}
+        recognitionEnable={true}
       />
     );
   }
